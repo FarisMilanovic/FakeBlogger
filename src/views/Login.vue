@@ -15,7 +15,7 @@
 export default{
     data() {
         return {
-            title: 'Login Form',
+            title: 'Login',
             username: '',
             password: ''
         }
@@ -48,7 +48,6 @@ form{
     position: relative;
     top: 30px;
     left: 40%;
-    background-color :aliceblue;
     height: 30vh;
     width: 400px;
     padding: 20px;
