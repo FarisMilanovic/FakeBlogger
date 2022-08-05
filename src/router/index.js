@@ -5,7 +5,7 @@ import Admin from '../views/Admin.vue'
 
 const routes = [
   {
-    path: '/login',
+    path: '/',
     name: 'login',
     component: Login
   },

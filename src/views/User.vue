@@ -36,6 +36,18 @@ export default {
 }
 </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <style scoped>
 input{
   margin-top: 10px;
@@ -48,7 +60,6 @@ input{
 }
 .form-container{
   position: relative;
-  left: 17vw;
   width: 60vw;
   padding: 30px 50px;
   border-bottom: 1px solid black;
@@ -59,6 +70,8 @@ input{
   background-color:  rgb(98, 184, 255);
   border-radius: 10px;
   border-bottom: none;
+  font-weight: 600;
+
   
 }
 .form-body{
