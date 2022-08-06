@@ -1,12 +1,12 @@
 <template>
   <div>
-    <input type="search" v-model.trim="input" placeholder="Search..." >
+    <!--<input type="search" v-model.trim="input" placeholder="Search..." >-->
     <AddPost />
     <div class="container" v-for="post in posts" :key="post.id">
       <h2 class="form-title">{{ post.id }}. {{ post.title }}</h2>
       <p class="form-body">{{ post.body }}</p>
       <button class="form-button edit">Edit</button>
-      <button class="form-button delete" @click="deletePosts(index)">Delete</button>
+      <button class="form-button delete" @click="onDelete">Delete</button>
     </div>
   </div>
 </template>
@@ -22,11 +22,14 @@ export default {
     },
     computed: mapState(['posts']),
     methods: {
-      ...mapActions(['getPosts'])
+      ...mapActions(['getPosts','deletePost']),
+      onDelete() {
+        this.deletePost(this.id)
+      }
     },
     created() {
       this.getPosts();
-    },
+    }
 
 }
 </script>
