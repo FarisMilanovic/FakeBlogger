@@ -50,18 +50,20 @@ export default {
 
 <style scoped>
 input{
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   width: 200px;
   height: 40px;
   border: 1px solid #333;
   border-radius: 10px;
   padding-left: 5px;
-  margin-bottom: 30px
+  
 }
 .form-container{
   position: relative;
   width: 60vw;
-  padding: 30px 50px;
+  left: 19%;
+  padding: 30px 0;
   border-bottom: 1px solid black;
 
 }
@@ -72,13 +74,11 @@ input{
   border-bottom: none;
   font-weight: 600;
 
-  
 }
 .form-body{
   padding-top: 15px;
+
 }
-
-
 </style>
 
 

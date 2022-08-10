@@ -45,14 +45,14 @@ export default{
 form{
     position: relative;
     top: 30px;
-    left: 30%;
+    left: 40%;
     height: 30vh;
     width: 400px;
     padding: 20px;
 }
 input{
     position: relative;
-    left: 2vw;
+    left: 4.3vw;
     padding-left: 10px;
     display: block;
     border: 1px solid #aaa;
@@ -64,6 +64,7 @@ input{
 button{
     font-size: 1rem;
     height: 40px;
+    width: 110px;
     border: 1px solid #aaa;
 }
 button:hover{

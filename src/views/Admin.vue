@@ -3,33 +3,39 @@
     <!--<input type="search" v-model.trim="input" placeholder="Search..." >-->
     <AddPost />
     <div class="container" v-for="post in posts" :key="post.id">
-      <h2 class="form-title">{{ post.id }}. {{ post.title }}</h2>
+      <h2 class="form-title">{{ post.title }}</h2>
       <p class="form-body">{{ post.body }}</p>
-      <button class="form-button edit">Edit</button>
-      <button class="form-button delete" @click="onDelete">Delete</button>
+      <button class="form-button edit" @click="goToEdit">Edit</button>
+      <button class="form-button delete" @click="onDelete(post.id)">Delete</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import store from '@/store';
+import { mapState, mapActions } from 'vuex';
 import AddPost from '../components/AddPost.vue';
 export default {
     name: "Admin",
     components: { AddPost },
     mounted(){
-      ///this.$store.dispatch('getPosts')
     },
     computed: mapState(['posts']),
     methods: {
       ...mapActions(['getPosts','deletePost']),
-      onDelete() {
-        this.deletePost(this.id)
+      onDelete(post) {
+        this.$store.dispatch('deletePost', post);
+      },
+      goToEdit(){
+        this.$router.push('/admin/edit')
       }
     },
     created() {
       this.getPosts();
-    }
+    },
+    updated() {
+      store.state.posts.id += 1
+    },
 
 }
 </script>
@@ -70,10 +76,14 @@ input{
   padding-left: 5px;
   margin-bottom: 30px
 }
+
+
+
 .container{
   position: relative;
   width: 60vw;
-  padding: 40px 50px;
+  left: 19%;
+  padding: 30px 0;
   border-bottom: 1px solid black;
 
 }
@@ -85,17 +95,20 @@ input{
   font-weight: 600;
 
 }
+
+
+
+
 button{
   font-size: 17px;
   margin: 20px;
-  height: 40px;
+  height: 30px;
+  width: 100px;
   border-radius: 10px;
 
 }
 .form-button:hover{
   font-weight: 600;
-  font-size: 17px;
-
 }
 .edit:hover{
   background-color: rgb(34, 197, 34);

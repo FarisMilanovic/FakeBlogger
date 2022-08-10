@@ -8,9 +8,16 @@ export default createStore({
   getters: {
   },
   mutations: {
-    SET_POSTS: (state, posts) => (state.posts = posts),
-    NEW_POST (state, post) {state.posts.unshift(post)},
-    REMOVE_POST (state, id) {state.posts = state.posts.filter((post) => post.id !== id)}
+    SET_POSTS (state, posts) {
+      state.posts = posts
+    },
+    NEW_POST (state, post) {
+      state.posts.unshift(post)
+    },
+    REMOVE_POST (state, postId) {
+      let posts = state.posts.filter(i => i.id != postId)
+      state.posts = posts;
+    }
   },
   actions: {
     async getPosts({ commit }) {
@@ -18,19 +25,14 @@ export default createStore({
         .get(`https://jsonplaceholder.typicode.com/posts`);
         commit('SET_POSTS', response.data);
         },
-    async addPost({ commit }, title, body) {
+    async addPost({ commit }, newPost) {
       const response = await axios
-        .post(`https://jsonplaceholder.typicode.com/posts`, {title, body});
+       .post(`https://jsonplaceholder.typicode.com/posts`, {newPost});
         commit('NEW_POST', response.data)
         console.log(response.data)
     },
-    async deletePost ({commit}, id) {
-      try{
-      await axios.delete(`https://jsonplaceholder.typicode.com/posts${id}`);
-      commit ('REMOVE_POST', id)
-      }catch (e) {
-        console.log(e)
-      }
+    async deletePost ({commit}, post) {
+      commit ('REMOVE_POST', post)
     }
   },
   modules: {
